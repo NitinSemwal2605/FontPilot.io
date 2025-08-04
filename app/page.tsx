@@ -694,9 +694,11 @@ export default function Home() {
                    whileTap={{ scale: 0.95 }}
                    className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25"
                  >
-                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                     <path d="M13.604 8.18c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28zm-3.604 0c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28zm-3.604 0c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28z"/>
-                   </svg>
+                   <div className="flex items-center gap-1">
+                     <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                     <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                     <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                   </div>
                    <span className="text-sm font-semibold">Now on Product Hunt - Add Review</span>
                    <motion.div
                      animate={{ x: [0, 3, 0] }}
