@@ -217,14 +217,25 @@ export default function Home() {
   const [isAiLoading, setIsAiLoading] = useState(false)
 
   const handleSearch = async () => {
-    if (!searchQuery.trim()) return
+    if (!searchQuery.trim()) {
+      toast.error('Please enter a description of your project')
+      return
+    }
     
     setIsLoading(true)
     setIsAiLoading(true)
     
+    // Show loading toast
+    const loadingToast = toast.loading('Analyzing your project and finding perfect font combinations...')
+    
     try {
-      // Get AI recommendations
-      const recommendations = await getAIRecommendations(searchQuery)
+      // Get AI recommendations with timeout
+      const aiPromise = getAIRecommendations(searchQuery)
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('AI request timeout')), 15000)
+      )
+      
+      const recommendations = await Promise.race([aiPromise, timeoutPromise])
       setAiRecommendations(recommendations)
       
       // Convert AI recommendations to FontPair format
@@ -237,9 +248,25 @@ export default function Home() {
       }))
       
       setFontPairs(aiPairs)
+      
+      // Dismiss loading toast and show success
+      toast.dismiss(loadingToast)
       toast.success(`Found ${aiPairs.length} perfect font combinations for your needs!`)
+      
+      // Smooth scroll to results
+      setTimeout(() => {
+        const resultsSection = document.querySelector('[data-section="font-results"]')
+        if (resultsSection) {
+          resultsSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 500)
+      
     } catch (error) {
       console.error('AI recommendation error:', error)
+      toast.dismiss(loadingToast)
       toast.error('Failed to get AI recommendations. Showing default fonts.')
       setFontPairs(sampleFontPairs)
     } finally {
