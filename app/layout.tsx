@@ -1,9 +1,9 @@
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
 import StructuredData from './components/structured-data'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -82,6 +82,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://fontpilot.io',
   },
+  icons: {
+    icon: [
+      { url: '/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png', sizes: '32x32', type: 'image/png' },
+      { url: '/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png',
+  },
 }
 
 export const viewport: Viewport = {
@@ -100,6 +110,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/ChatGPT Image Aug 4, 2025, 03_15_39 PM.png" />
         <StructuredData />
       </head>
       <body className={`${inter.className} antialiased`}>

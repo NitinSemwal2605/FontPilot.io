@@ -559,7 +559,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium mb-6 neon-glow"
             >
               <Sparkles className="w-4 h-4" />
-              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'Navigate Typography with Precision'}
+              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'AI-Powered Typography Navigation'}
               {heroFonts.heading !== 'Merriweather' && (
                 <Button
                   variant="ghost"
@@ -600,11 +600,12 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
               style={{ fontFamily: `'${heroFonts.body}', sans-serif` }}
             >
-              Discover perfect font combinations in seconds. From elegant serifs to bold displays, 
-              our AI guides you to typography that elevates your designs.
+              Transform your designs with AI-powered font pairing that understands your vision. 
+              Whether you're crafting a luxury brand, building a tech startup, or creating a wedding website, 
+              our intelligent system delivers perfectly harmonized typography combinations that speak to your audience.
             </motion.p>
 
             {/* AI-Powered Search Section */}
@@ -617,7 +618,7 @@ export default function Home() {
               
                              <div className="flex gap-3">
                  <Input
-                   placeholder="Describe your project: 'Building a SaaS landing page', 'Creating a wedding website', 'Designing a tech portfolio'..."
+                   placeholder="Tell us about your project: 'Building a luxury brand', 'Creating a tech startup', 'Designing a wedding website'..."
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
@@ -662,7 +663,7 @@ export default function Home() {
                      }
                    }}
                  >
-                   <span className="text-sm font-medium">Discover Our Font Collection</span>
+                   <span className="text-sm font-medium">Explore Curated Font Combinations</span>
                    <motion.div
                      animate={{ y: [0, 5, 0] }}
                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
