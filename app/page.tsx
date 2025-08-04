@@ -235,7 +235,7 @@ export default function Home() {
         setTimeout(() => reject(new Error('AI request timeout')), 15000)
       )
       
-      const recommendations = await Promise.race([aiPromise, timeoutPromise])
+      const recommendations = await Promise.race([aiPromise, timeoutPromise]) as AIRecommendation[]
       setAiRecommendations(recommendations)
       
       // Convert AI recommendations to FontPair format
