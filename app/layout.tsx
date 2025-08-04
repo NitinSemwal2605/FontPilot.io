@@ -1,29 +1,94 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
+import StructuredData from './components/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'FontPair.ai - AI-Powered Font Pairing Assistant',
-  description: 'Find perfect font combinations instantly with AI. Generate beautiful typography pairings for your designs with mood, brand, or font-based suggestions.',
-  keywords: 'font pairing, typography, AI, design, Google Fonts, font combinations',
-  authors: [{ name: 'FontPair.ai Team' }],
+  metadataBase: new URL('https://fontpilot.io'),
+  title: {
+    default: 'FontPilot.io - Navigate Typography with Precision. Powered by AI.',
+    template: '%s | FontPilot.io'
+  },
+  description: 'Navigate typography with precision using AI-powered font pairing. Find perfect font combinations for websites, logos, and digital projects instantly. Free font pairing tool with Google Fonts integration.',
+  keywords: [
+    'font pairing',
+    'typography',
+    'AI font combinations',
+    'Google Fonts',
+    'web design',
+    'font combinations',
+    'typography tool',
+    'font matching',
+    'design tools',
+    'font pairing generator',
+    'AI typography',
+    'font selection',
+    'web typography',
+    'design resources',
+    'font recommendations'
+  ],
+  authors: [{ name: 'Nitin Semwal', url: 'https://github.com/NitinSemwal2605' }],
+  creator: 'Nitin Semwal',
+  publisher: 'FontPair.ai',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'FontPair.ai - AI-Powered Font Pairing Assistant',
-    description: 'Find perfect font combinations instantly with AI. Generate beautiful typography pairings for your designs.',
     type: 'website',
-    url: 'https://fontpair.ai',
-    siteName: 'FontPair.ai',
+    locale: 'en_US',
+    url: 'https://fontpilot.io',
+    siteName: 'FontPilot.io',
+    title: 'FontPilot.io - Navigate Typography with Precision. Powered by AI.',
+    description: 'Navigate typography with precision using AI-powered font pairing. Find perfect font combinations for websites, logos, and digital projects instantly.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'FontPair.ai - AI-Powered Font Pairing Tool',
+      },
+    ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'FontPair.ai - AI-Powered Font Pairing Assistant',
-    description: 'Find perfect font combinations instantly with AI.',
+      twitter: {
+      card: 'summary_large_image',
+      site: '@nitintweetz',
+      creator: '@nitintweetz',
+      title: 'FontPilot.io - Navigate Typography with Precision. Powered by AI.',
+      description: 'Navigate typography with precision using AI-powered font pairing. Find perfect font combinations instantly.',
+      images: ['/og-image.png'],
+    },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
-  viewport: 'width=device-width, initial-scale=1',
-  robots: 'index, follow',
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+    yahoo: 'your-yahoo-verification-code',
+  },
+  alternates: {
+    canonical: 'https://fontpilot.io',
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -33,6 +98,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${inter.className} antialiased`}>
         {children}
         <Toaster 
