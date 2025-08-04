@@ -4,11 +4,23 @@ import { Button } from '@/components/ui/button'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Github, Heart, Mail, Menu, Sparkles, Twitter, X } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+
+  const handleLogoClick = () => {
+    // If we're already on the home page, refresh it
+    if (window.location.pathname === '/') {
+      window.location.reload()
+    } else {
+      // Navigate to home page
+      router.push('/')
+    }
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/20">
@@ -18,7 +30,8 @@ export default function Navigation() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-200"
+            onClick={handleLogoClick}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-white to-gray-200 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-black" />
