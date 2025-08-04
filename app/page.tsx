@@ -559,7 +559,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium mb-6 neon-glow"
             >
               <Sparkles className="w-4 h-4" />
-              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'AI-Powered Typography Navigation'}
+              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'AI-Powered Font Pairing'}
               {heroFonts.heading !== 'Merriweather' && (
                 <Button
                   variant="ghost"
@@ -584,15 +584,15 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Navigate
+                FontPilot
               </motion.span>
               <motion.span 
-                className="gradient-text block"
+                className="gradient-text"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Typography
+                .io
               </motion.span>
             </motion.h1>
             
@@ -600,12 +600,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
+              className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
               style={{ fontFamily: `'${heroFonts.body}', sans-serif` }}
             >
-              Transform your designs with AI-powered font pairing that understands your vision. 
-              Whether you're crafting a luxury brand, building a tech startup, or creating a wedding website, 
-              our intelligent system delivers perfectly harmonized typography combinations that speak to your audience.
+              AI-powered font pairing that understands your vision. 
+              Get perfectly harmonized typography combinations instantly.
             </motion.p>
 
             {/* AI-Powered Search Section */}
@@ -671,6 +670,58 @@ export default function Home() {
                      <ChevronDown className="w-6 h-6" />
                    </motion.div>
                  </motion.div>
+               </motion.div>
+
+                              {/* Product Hunt Review Button */}
+               <motion.div
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.8, delay: 1.2 }}
+                 className="mt-12 flex justify-center"
+               >
+                 <motion.a
+                   href="https://www.producthunt.com/products/fontpilot-io?launch=fontpilot-io"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   initial={{ opacity: 0, scale: 0.9 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   transition={{ duration: 0.5, delay: 1.3 }}
+                   whileHover={{ 
+                     scale: 1.05,
+                     y: -2,
+                     transition: { duration: 0.2 }
+                   }}
+                   whileTap={{ scale: 0.95 }}
+                   className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25"
+                 >
+                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                     <path d="M13.604 8.18c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28zm-3.604 0c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28zm-3.604 0c0-.738.662-1.28 1.423-1.28.76 0 1.423.542 1.423 1.28 0 .738-.662 1.28-1.423 1.28-.76 0-1.423-.542-1.423-1.28z"/>
+                   </svg>
+                   <span className="text-sm font-semibold">Now on Product Hunt - Add Review</span>
+                   <motion.div
+                     animate={{ x: [0, 3, 0] }}
+                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                     className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   >
+                     →
+                   </motion.div>
+                 </motion.a>
+               </motion.div>
+
+               {/* Social Proof */}
+               <motion.div
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.8, delay: 1.5 }}
+                 className="mt-8 text-center"
+               >
+                 <div className="flex items-center justify-center gap-4 text-gray-400 text-sm">
+                   <span>Trusted by designers & developers worldwide</span>
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                     <span className="text-green-400">Live</span>
+                   </div>
+                 </div>
                </motion.div>
            </motion.div>
           </div>

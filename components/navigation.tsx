@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Github, Heart, Mail, Menu, Sparkles, Twitter, X } from 'lucide-react'
+import { Github, Heart, Mail, Menu, Twitter, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -34,7 +34,11 @@ export default function Navigation() {
             onClick={handleLogoClick}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-white to-gray-200 rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-black" />
+              <div className="flex items-center gap-0.5">
+                <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
+              </div>
             </div>
             <span className="text-xl font-bold gradient-text">FontPilot.io</span>
           </motion.div>
