@@ -276,29 +276,45 @@ export default function Home() {
   const handlePreviewInHero = async (pair: FontPair) => {
     try {
       setFontsLoading(true)
-      // Load fonts dynamically
-      await loadFontsForPair(formatFontFamily(pair.heading), formatFontFamily(pair.body))
       
+      // Show loading toast
+      const loadingToast = toast.loading('Loading fonts and applying to hero...')
+      
+      // Load fonts dynamically with timeout
+      const fontLoadPromise = loadFontsForPair(formatFontFamily(pair.heading), formatFontFamily(pair.body))
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Font loading timeout')), 10000)
+      )
+      
+      await Promise.race([fontLoadPromise, timeoutPromise])
+      
+      // Update hero fonts with smooth transition
       setHeroFonts({
         heading: formatFontFamily(pair.heading),
         body: formatFontFamily(pair.body)
       })
       
-      // Close the modal
+      // Close any open modals
       setSelectedPair(null)
       
-      // Smooth scroll to hero section
-      const heroSection = document.getElementById('hero-section')
-      if (heroSection) {
-        heroSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        })
-      }
-      
+      // Dismiss loading toast and show success
+      toast.dismiss(loadingToast)
       toast.success('Font pair applied to hero section!')
+      
+      // Smooth scroll to hero section with delay for font rendering
+      setTimeout(() => {
+        const heroSection = document.getElementById('hero-section')
+        if (heroSection) {
+          heroSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 300)
+      
     } catch (error) {
-      toast.error('Failed to load fonts')
+      console.error('Font loading error:', error)
+      toast.error('Failed to load fonts. Please try again.')
     } finally {
       setFontsLoading(false)
     }
