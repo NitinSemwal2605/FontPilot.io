@@ -11,7 +11,7 @@ import { addToFavorites } from '@/lib/favorites'
 import { formatFontFamily, getPopularFonts, GoogleFont, loadFontsForPair, loadGoogleFont } from '@/lib/fonts'
 import { formatFontName, generateCSS } from '@/lib/utils'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Copy, Heart, Sparkles } from 'lucide-react'
+import { ChevronDown, Copy, Heart, Sparkles } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -277,18 +277,55 @@ export default function Home() {
 
   const handleCategorySelect = (categoryName: string) => {
     setSelectedCategory(categoryName)
-    if (categoryName === 'All') {
-      setFontPairs(sampleFontPairs)
-    } else {
-      const filteredPairs = sampleFontPairs.filter(pair => pair.category === categoryName)
-      setFontPairs(filteredPairs)
-    }
+    
+    // Show loading state briefly for smooth transition
+    const loadingToast = toast.loading(`Loading ${categoryName} fonts...`)
+    
+    setTimeout(() => {
+      if (categoryName === 'All') {
+        setFontPairs(sampleFontPairs)
+      } else {
+        const filteredPairs = sampleFontPairs.filter(pair => pair.category === categoryName)
+        setFontPairs(filteredPairs)
+      }
+      
+      toast.dismiss(loadingToast)
+      toast.success(`Showing ${categoryName} font combinations`)
+      
+      // Smooth scroll to results
+      setTimeout(() => {
+        const resultsSection = document.querySelector('[data-section="font-results"]')
+        if (resultsSection) {
+          resultsSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 300)
+    }, 500)
   }
 
   const handleCopyCSS = (pair: FontPair) => {
     const css = generateCSS(pair)
-    navigator.clipboard.writeText(css)
-    toast.success('CSS copied to clipboard!')
+    
+    navigator.clipboard.writeText(css).then(() => {
+      toast.success('CSS copied to clipboard!', {
+        duration: 3000,
+        icon: '📋',
+      })
+    }).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = css
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      toast.success('CSS copied to clipboard!', {
+        duration: 3000,
+        icon: '📋',
+      })
+    })
   }
 
   const handleSavePair = (pair: FontPair) => {
@@ -486,12 +523,39 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-black" />
         
+        {/* Floating Background Elements */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 360],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+          className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{ 
+            rotate: [360, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+          className="absolute bottom-20 right-10 w-40 h-40 bg-white/5 rounded-full blur-xl"
+        />
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 min-h-screen">
           <div className="text-center">
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium mb-6 neon-glow"
             >
               <Sparkles className="w-4 h-4" />
@@ -512,22 +576,35 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              className="text-6xl md:text-8xl font-bold text-white mb-8"
               style={{ fontFamily: `'${heroFonts.heading}', serif` }}
             >
-              Find Perfect
-              <span className="gradient-text block">Font Combinations</span>
+              <motion.span
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Discover
+              </motion.span>
+              <motion.span 
+                className="gradient-text block"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Perfect Fonts
+              </motion.span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
+              className="text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
               style={{ fontFamily: `'${heroFonts.body}', sans-serif` }}
             >
-              Instantly discover beautiful typography pairings for your designs. 
-              Powered by AI to match your mood, brand, or style preferences.
+              Transform your designs with AI-curated typography combinations. 
+              From elegant serifs to bold displays, find your perfect match.
             </motion.p>
 
             {/* AI-Powered Search Section */}
@@ -535,42 +612,65 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="max-w-3xl mx-auto"
+              className="max-w-2xl mx-auto"
             >
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">AI-Powered Font Recommendations</h3>
-                <p className="text-gray-300 text-sm">Describe your project and get personalized font combinations</p>
-                <div className="flex flex-wrap justify-center gap-2 mt-3 text-xs text-gray-400">
-                  <span className="px-2 py-1 bg-white/10 rounded-full">"Building a SaaS landing page"</span>
-                  <span className="px-2 py-1 bg-white/10 rounded-full">"Creative agency website"</span>
-                  <span className="px-2 py-1 bg-white/10 rounded-full">"Luxury brand portfolio"</span>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Describe your project: e.g., Building a SaaS landing page..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  className="flex-1 text-lg bg-black border-white/20 text-white placeholder:text-gray-400"
-                />
-                <Button 
-                  onClick={handleSearch}
-                  disabled={isLoading || isAiLoading}
-                  className="px-8 bg-white hover:bg-gray-200 text-black font-semibold shadow-lg transition-all duration-200 hover:scale-105"
-                >
-                 {isLoading || isAiLoading ? (
+              
+                             <div className="flex gap-3">
+                 <Input
+                   placeholder="Tell us about your project: wedding site, tech startup, portfolio..."
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
+                   onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                   className="flex-1 text-lg bg-black border-white/20 text-white placeholder:text-gray-400"
+                 />
+                 <Button 
+                   onClick={handleSearch}
+                   disabled={isLoading || isAiLoading}
+                   className="px-8 bg-white hover:bg-gray-200 text-black font-semibold shadow-lg transition-all duration-200 hover:scale-105"
+                 >
+                  {isLoading || isAiLoading ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    >
+                      <Sparkles className="w-5 h-5" />
+                    </motion.div>
+                  ) : (
+                    <Sparkles className="w-5 h-5" />
+                  )}
+                </Button>
+               </div>
+               
+               {/* Floating Down Arrow */}
+               <motion.div
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.8, delay: 1.0 }}
+                 className="mt-16 text-center"
+               >
+                 <motion.div
+                   animate={{ y: [0, 10, 0] }}
+                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                   className="inline-flex flex-col items-center gap-2 text-gray-400 hover:text-white cursor-pointer"
+                   onClick={() => {
+                     const resultsSection = document.querySelector('[data-section="font-results"]')
+                     if (resultsSection) {
+                       resultsSection.scrollIntoView({ 
+                         behavior: 'smooth',
+                         block: 'start'
+                       })
+                     }
+                   }}
+                 >
+                   <span className="text-sm font-medium">Explore Fonts</span>
                    <motion.div
-                     animate={{ rotate: 360 }}
-                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                     animate={{ y: [0, 5, 0] }}
+                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                    >
-                     <Sparkles className="w-5 h-5" />
+                     <ChevronDown className="w-6 h-6" />
                    </motion.div>
-                 ) : (
-                   <Sparkles className="w-5 h-5" />
-                 )}
-               </Button>
-             </div>
+                 </motion.div>
+               </motion.div>
            </motion.div>
           </div>
         </div>
