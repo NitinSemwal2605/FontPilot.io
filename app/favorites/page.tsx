@@ -51,7 +51,14 @@ export default function FavoritesPage() {
         body: formatFontFamily(favorite.body)
       }))
       
-      window.location.href = '/#hero-section'
+      // Store fonts in session storage for smooth transition
+      sessionStorage.setItem('hero-fonts', JSON.stringify({
+        heading: formatFontFamily(favorite.heading),
+        body: formatFontFamily(favorite.body)
+      }))
+      
+      // Navigate to home page with smooth transition
+      window.location.href = '/'
       toast.success('Applied to hero!')
     } catch (error) {
       toast.error('Failed to load fonts')
