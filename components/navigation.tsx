@@ -23,7 +23,7 @@ export default function Navigation() {
             <div className="w-8 h-8 bg-gradient-to-r from-white to-gray-200 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-black" />
             </div>
-            <span className="text-xl font-bold gradient-text">FontPair.ai</span>
+            <span className="text-xl font-bold gradient-text">FontPilot.io</span>
           </motion.div>
 
           {/* Desktop Navigation */}
