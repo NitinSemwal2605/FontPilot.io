@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Sparkles, Github, Twitter, Mail, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { Github, Heart, Mail, Sparkles, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -27,15 +27,21 @@ export default function Footer() {
               AI-powered font pairing assistant that helps designers and developers find perfect typography combinations instantly.
             </p>
             <div className="flex gap-4">
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                <Github className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                <Twitter className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                <Mail className="w-4 h-4" />
-              </Button>
+              <a href="https://github.com/NitinSemwal2605" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Github className="w-4 h-4" />
+                </Button>
+              </a>
+              <a href="https://x.com/nitintweetz" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Twitter className="w-4 h-4" />
+                </Button>
+              </a>
+              <a href="mailto:55semwalnitin@gmail.com">
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Mail className="w-4 h-4" />
+                </Button>
+              </a>
             </div>
           </motion.div>
 
@@ -81,7 +87,7 @@ export default function Footer() {
           className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-gray-400 text-sm">
-            © 2024 FontPair.ai. All rights reserved.
+            © 2025 FontPair.ai. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm flex items-center gap-1 mt-2 md:mt-0">
             Made with <Heart className="w-4 h-4 text-red-500" /> for designers

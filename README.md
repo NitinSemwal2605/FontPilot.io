@@ -33,14 +33,21 @@ npm install
 yarn install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+```bash
+# Create a .env.local file in the root directory
+cp .env.example .env.local
+# Then edit .env.local with your API keys
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🛠️ Tech Stack
 
@@ -75,6 +82,29 @@ FontPair.ai is fully responsive and works beautifully on:
 - Desktop (1200px+)
 - Tablet (768px - 1199px)
 - Mobile (320px - 767px)
+
+## 🔧 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```bash
+# Google Fonts API Key
+NEXT_PUBLIC_GOOGLE_FONTS_API_KEY=your_google_fonts_api_key_here
+
+# Google Gemini AI API Key  
+NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY=your_google_gemini_api_key_here
+```
+
+### Getting API Keys
+
+1. **Google Fonts API**: 
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Enable the Google Fonts API
+   - Create credentials and get your API key
+
+2. **Google Gemini AI API**:
+   - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Create a new API key for Gemini Pro
 
 ## 🔧 Customization
 
