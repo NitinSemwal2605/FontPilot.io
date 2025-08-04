@@ -21,11 +21,11 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-white to-gray-200 rounded-lg flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-black" />
               </div>
-              <span className="text-xl font-bold gradient-text">FontPair.ai</span>
+              <span className="text-xl font-bold gradient-text">FontPilot.io</span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
-              AI-powered font pairing assistant that helps designers and developers find perfect typography combinations instantly.
-            </p>
+                          <p className="text-gray-400 mb-6 max-w-md">
+                Navigate typography with precision using AI-powered font pairing. Transform your designs with perfectly curated font combinations that elevate your projects to new heights.
+              </p>
             <div className="flex gap-4">
               <a href="https://github.com/NitinSemwal2605" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
@@ -87,7 +87,7 @@ export default function Footer() {
           className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-gray-400 text-sm">
-            © 2025 FontPair.ai. All rights reserved.
+            © 2025 FontPilot.io. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm flex items-center gap-1 mt-2 md:mt-0">
             Made with <Heart className="w-4 h-4 text-red-500" /> for designers
