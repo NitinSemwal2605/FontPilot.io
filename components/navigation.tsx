@@ -2,9 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Github, Heart, Menu, Sparkles, Twitter, X } from 'lucide-react'
+import { Github, Heart, Mail, Menu, Sparkles, Twitter, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,23 +35,35 @@ export default function Navigation() {
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">
               Features
             </a>
-            <a href="#examples" className="text-gray-300 hover:text-white transition-colors">
-              Examples
-            </a>
-            <a href="#about" className="text-gray-300 hover:text-white transition-colors">
-              About
-            </a>
-            <Link href="/favorites" className="text-gray-300 hover:text-white transition-colors flex items-center gap-1">
-              <Heart className="w-4 h-4" />
+            
+            <Link 
+              href="/favorites" 
+              className="text-gray-300 hover:text-white transition-colors flex items-center gap-1 hover:scale-105 duration-200"
+              onClick={() => {
+                // Add loading state for smooth transition
+                const loadingToast = toast.loading('Loading favorites...')
+                setTimeout(() => toast.dismiss(loadingToast), 1000)
+              }}
+            >
+              {/* <Heart className="w-4 h-4" /> */}
               Favorites
             </Link>
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-                <Github className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-                <Twitter className="w-4 h-4" />
-              </Button>
+              <a href="https://github.com/NitinSemwal2605" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                  <Github className="w-4 h-4" />
+                </Button>
+              </a>
+              <a href="https://x.com/nitintweetz" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                  <Twitter className="w-4 h-4" />
+                </Button>
+              </a>
+              <a href="mailto:55semwalnitin@gmail.com">
+                <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                  <Mail className="w-4 h-4" />
+                </Button>
+              </a>
             </div>
           </motion.div>
 
@@ -80,23 +93,35 @@ export default function Navigation() {
              <a href="#features" className="block text-gray-300 hover:text-white transition-colors">
                Features
              </a>
-             <a href="#examples" className="block text-gray-300 hover:text-white transition-colors">
-               Examples
-             </a>
-             <a href="#about" className="block text-gray-300 hover:text-white transition-colors">
-               About
-             </a>
-             <Link href="/favorites" className="block text-gray-300 hover:text-white transition-colors flex items-center gap-1">
+          
+             <Link 
+               href="/favorites" 
+               className="block text-gray-300 hover:text-white transition-colors flex items-center gap-1"
+               onClick={() => {
+                 // Add loading state for smooth transition
+                 const loadingToast = toast.loading('Loading favorites...')
+                 setTimeout(() => toast.dismiss(loadingToast), 1000)
+               }}
+             >
                <Heart className="w-4 h-4" />
                Favorites
              </Link>
              <div className="flex items-center gap-2 pt-4">
-               <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-                 <Github className="w-4 h-4" />
-               </Button>
-               <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-                 <Twitter className="w-4 h-4" />
-               </Button>
+               <a href="https://github.com/NitinSemwal2605" target="_blank" rel="noopener noreferrer">
+                 <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                   <Github className="w-4 h-4" />
+                 </Button>
+               </a>
+               <a href="https://x.com/nitintweetz" target="_blank" rel="noopener noreferrer">
+                 <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                   <Twitter className="w-4 h-4" />
+                 </Button>
+               </a>
+               <a href="mailto:55semwalnitin@gmail.com">
+                 <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
+                   <Mail className="w-4 h-4" />
+                 </Button>
+               </a>
              </div>
            </div>
           </motion.div>
