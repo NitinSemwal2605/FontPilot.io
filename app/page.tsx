@@ -511,7 +511,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen dark-gradient pattern-bg">
+    <main className="min-h-screen dark-gradient pattern-bg">
       <Navigation />
       {/* Hero Section */}
       <motion.div 
@@ -559,7 +559,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium mb-6 neon-glow"
             >
               <Sparkles className="w-4 h-4" />
-              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'AI-Powered Font Pairing'}
+              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'Navigate Typography with Precision'}
               {heroFonts.heading !== 'Merriweather' && (
                 <Button
                   variant="ghost"
@@ -584,7 +584,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Discover
+                Navigate
               </motion.span>
               <motion.span 
                 className="gradient-text block"
@@ -592,7 +592,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Perfect Fonts
+                Typography
               </motion.span>
             </motion.h1>
             
@@ -603,8 +603,8 @@ export default function Home() {
               className="text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
               style={{ fontFamily: `'${heroFonts.body}', sans-serif` }}
             >
-              Transform your designs with AI-curated typography combinations. 
-              From elegant serifs to bold displays, find your perfect match.
+              Discover perfect font combinations in seconds. From elegant serifs to bold displays, 
+              our AI guides you to typography that elevates your designs.
             </motion.p>
 
             {/* AI-Powered Search Section */}
@@ -617,7 +617,7 @@ export default function Home() {
               
                              <div className="flex gap-3">
                  <Input
-                   placeholder="Tell us about your project: wedding site, tech startup, portfolio..."
+                   placeholder="Describe your project: 'Building a SaaS landing page', 'Creating a wedding website', 'Designing a tech portfolio'..."
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
@@ -662,7 +662,7 @@ export default function Home() {
                      }
                    }}
                  >
-                   <span className="text-sm font-medium">Explore Fonts</span>
+                   <span className="text-sm font-medium">Discover Our Font Collection</span>
                    <motion.div
                      animate={{ y: [0, 5, 0] }}
                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -684,9 +684,10 @@ export default function Home() {
          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
        >
          <div className="text-center mb-12">
-           <h2 className="text-4xl font-bold text-white mb-4">Browse by Category</h2>
+           <h2 className="text-4xl font-bold text-white mb-4">Browse Font Combinations by Category</h2>
            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-             Explore curated font combinations organized by style and purpose
+             From professional to creative, find the perfect typography for your project. 
+             Each category is carefully curated to match your design needs.
            </p>
          </div>
          
@@ -772,7 +773,11 @@ export default function Home() {
            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20"
            data-section="font-results"
          >
-         <h2 className="text-3xl font-bold text-center mb-8 text-white">Discover Font Combinations</h2>
+         <h2 className="text-3xl font-bold text-center mb-8 text-white">Discover AI-Curated Font Combinations</h2>
+         <p className="text-gray-400 text-center mb-12 max-w-3xl mx-auto">
+           Each combination is handpicked by our AI to ensure perfect harmony between heading and body fonts. 
+           Test them in real-time and export ready-to-use CSS code.
+         </p>
          
 
          
@@ -780,7 +785,7 @@ export default function Home() {
            <div className="text-center py-12">
              <div className="inline-flex items-center gap-2 text-white">
                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-               Loading fonts from Google Fonts...
+               Loading our curated font collection...
              </div>
            </div>
          )}
@@ -1024,6 +1029,6 @@ export default function Home() {
       
       {/* Footer */}
       <Footer />
-    </div>
+    </main>
   )
 } 
