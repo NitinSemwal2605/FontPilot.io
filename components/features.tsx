@@ -1,44 +1,44 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Sparkles, Eye, Download, Share2, Zap, Palette } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { motion } from 'framer-motion'
+import { Download, Eye, Palette, Share2, Sparkles, Zap } from 'lucide-react'
 
 const features = [
   {
     icon: Sparkles,
-    title: 'AI-Powered Pairing',
-    description: 'Intelligent algorithms suggest perfect font combinations based on your mood, brand, or style preferences.',
+    title: 'AI-Powered Navigation',
+    description: 'Navigate typography with precision using intelligent algorithms that understand your design needs and suggest perfect font combinations.',
     color: 'from-blue-500 to-purple-500'
   },
   {
     icon: Eye,
     title: 'Live Previews',
-    description: 'See how font combinations look in real UI components like headers, blog titles, and landing pages.',
+    description: 'Experience your font choices in real-time with live previews of headers, blog titles, and landing pages.',
     color: 'from-green-500 to-teal-500'
   },
   {
     icon: Download,
     title: 'Export CSS',
-    description: 'Get ready-to-use CSS code with Google Fonts links and proper font-family declarations.',
+    description: 'Get production-ready CSS code with Google Fonts links and optimized font-family declarations for immediate use.',
     color: 'from-orange-500 to-red-500'
   },
   {
     icon: Share2,
     title: 'Share & Save',
-    description: 'Save your favorite combinations and share them with your team or the community.',
+    description: 'Build your typography library by saving favorite combinations and sharing them with your team.',
     color: 'from-purple-500 to-pink-500'
   },
   {
     icon: Zap,
     title: 'Instant Results',
-    description: 'Get beautiful font pairings instantly without spending hours on experimentation.',
+    description: 'Navigate to perfect typography in seconds, not hours. Get beautiful font pairings instantly.',
     color: 'from-yellow-500 to-orange-500'
   },
   {
     icon: Palette,
     title: 'Google Fonts',
-    description: 'Access the entire Google Fonts library with curated pairings that work perfectly together.',
+    description: 'Access the complete Google Fonts library with expertly curated pairings that harmonize perfectly.',
     color: 'from-indigo-500 to-blue-500'
   }
 ]
@@ -55,10 +55,10 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">
-            Why Choose FontPair.ai?
+            Why Choose FontPilot.io?
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Transform your typography workflow with AI-powered font pairing that saves time and delivers beautiful results.
+            Navigate typography with precision using AI-powered tools that transform your design workflow and deliver stunning results.
           </p>
         </motion.div>
 
