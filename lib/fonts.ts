@@ -5,7 +5,7 @@ export interface GoogleFont {
 }
 
 // Google Fonts API configuration
-const GOOGLE_FONTS_API_KEY = 'AIzaSyA0bVyjDLzW-ovQpSRSX_X4oXdaTcdtwh0'
+const GOOGLE_FONTS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_FONTS_API_KEY || 'AIzaSyA0bVyjDLzW-ovQpSRSX_X4oXdaTcdtwh0'
 const GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts'
 
 export const googleFonts: GoogleFont[] = [
