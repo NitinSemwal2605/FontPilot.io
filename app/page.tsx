@@ -306,8 +306,8 @@ export default function Home() {
 
   const resetHeroFonts = () => {
     setHeroFonts({
-      heading: 'Inter',
-      body: 'Inter'
+      heading: 'Merriweather',
+      body: 'Open Sans'
     })
     toast.success('Reset to default fonts!')
   }
@@ -452,8 +452,8 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-200 text-black px-4 py-2 rounded-full text-sm font-medium mb-6 neon-glow"
             >
               <Sparkles className="w-4 h-4" />
-              {heroFonts.heading !== 'Inter' ? 'Live Font Preview' : 'AI-Powered Font Pairing'}
-              {heroFonts.heading !== 'Inter' && (
+              {heroFonts.heading !== 'Merriweather' ? 'Live Font Preview' : 'AI-Powered Font Pairing'}
+              {heroFonts.heading !== 'Merriweather' && (
                 <Button
                   variant="ghost"
                   size="sm"
